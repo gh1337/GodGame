@@ -37,8 +37,9 @@ public class CameraController : MonoBehaviour
 
             y = ClampAngle(y, yMinLimit, yMaxLimit);
 
-            distance -= Input.GetAxis("Fire1") * zoomSpd * 0.02f;
-            distance += Input.GetAxis("Fire2") * zoomSpd * 0.02f;
+            // it aint work
+            distance -= Input.GetAxis("Mouse ScrollWheel") * zoomSpd * 0.02f;
+            distance += Input.GetAxis("Mouse ScrollWheel") * zoomSpd * 0.02f;
 
             Quaternion rotation = Quaternion.Euler(y, x, 0.0f);
             Vector3 position = rotation * new Vector3(0.0f, 0.0f, -distance) + target.position;
