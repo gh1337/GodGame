@@ -3,7 +3,8 @@ using System.Collections;
 
 public class BlockPlacer : MonoBehaviour
 {
-
+    //Is the player in block placement mode?
+    public static bool isPlacementMode = true;
     //Handles # of blocks the user has
     public bool unlimitedBlocks = false;
     public int blocksLeft = 0;
@@ -38,7 +39,7 @@ public class BlockPlacer : MonoBehaviour
         /// And remove // from the start of the next line of code
         //Cursor.lockCursor = true;
 
-
+        if (isPlacementMode == true) { 
         //Make sure the player has enough blocks
         if (blocksLeft > 0 || unlimitedBlocks)
         {
@@ -78,6 +79,7 @@ public class BlockPlacer : MonoBehaviour
                     }
                 }
             }
+        }
         }
     }
 

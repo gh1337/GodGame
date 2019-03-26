@@ -19,17 +19,15 @@ public class CameraController : MonoBehaviour
 
     public void Start()
     {
-
         x = 22f;
         y = 33f;
-
-        // Make the rigid body not change rotation
-       // if (rigidbody)
-       //     rigidbody.freezeRotation = true;
     }
 
     public void LateUpdate()
     {
+        
+
+        
         if (target)
         {
             x -= Input.GetAxis("Horizontal") * xSpeed * 0.02f;
@@ -37,9 +35,12 @@ public class CameraController : MonoBehaviour
 
             y = ClampAngle(y, yMinLimit, yMaxLimit);
 
-            // it aint work
-            distance -= Input.GetAxis("Fire1") * zoomSpd * 0.02f;
-            distance += Input.GetAxis("Fire2") * zoomSpd * 0.02f;
+            //if placementmode is set false, on click zoomin
+            if (BlockPlacer.isPlacementMode == false)
+            {
+                distance -= Input.GetAxis("Fire1") * zoomSpd * 0.02f;
+                distance += Input.GetAxis("Fire2") * zoomSpd * 0.02f;
+            }
 
             Quaternion rotation = Quaternion.Euler(y, x, 0.0f);
             Vector3 position = rotation * new Vector3(0.0f, 0.0f, -distance) + target.position;
@@ -47,6 +48,11 @@ public class CameraController : MonoBehaviour
             transform.rotation = rotation;
             transform.position = position;
         }
+    }
+
+    private void Update()
+    {
+        
     }
 
     public static float ClampAngle(float angle, float min, float max)
