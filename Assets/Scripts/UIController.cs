@@ -8,6 +8,8 @@ public class UIController : MonoBehaviour {
 
     public Button B_InvokeCube;
     public Button B_PlacementModeTrue;
+    public Button B_Quit;
+
     public GameObject cube;
 
     public void B_InvokeCubeOnClick()
@@ -24,6 +26,11 @@ public class UIController : MonoBehaviour {
         {
             BlockPlacer.isPlacementMode = true;
         }
+    }
+
+    public void B_QuitOnClick()
+    {
+        Application.Quit();
     }
 
 }

@@ -6,7 +6,8 @@ public class CameraController : MonoBehaviour
 {
     public Transform target;
     public float distance = 20.0f;
-    public float zoomSpd = 2.0f;
+    public float zoomSpd = 5.0f;
+    public float scrollSpd = 15.0f;
 
     public float xSpeed = 240.0f;
     public float ySpeed = 123.0f;
@@ -25,7 +26,6 @@ public class CameraController : MonoBehaviour
 
     public void LateUpdate()
     {
-        
 
         
         if (target)
@@ -38,8 +38,16 @@ public class CameraController : MonoBehaviour
             //if placementmode is set false, on click zoomin
             if (BlockPlacer.isPlacementMode == false)
             {
-                distance -= Input.GetAxis("Fire1") * zoomSpd * 0.02f;
-                distance += Input.GetAxis("Fire2") * zoomSpd * 0.02f;
+                if (Input.GetAxis("Mouse ScrollWheel") > 0f) // forward
+                {
+                    distance -= scrollSpd * zoomSpd * 0.02f;
+                }
+                else if (Input.GetAxis("Mouse ScrollWheel") < 0f) // backwards
+                {
+                    distance += scrollSpd * zoomSpd * 0.02f;
+                }
+
+                
             }
 
             Quaternion rotation = Quaternion.Euler(y, x, 0.0f);
@@ -50,10 +58,6 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        
-    }
 
     public static float ClampAngle(float angle, float min, float max)
     {
