@@ -39,6 +39,29 @@ public class BlockPlacer : MonoBehaviour
         /// And remove // from the start of the next line of code
         //Cursor.lockCursor = true;
 
+        if (isPlacementMode == false)
+        {
+
+            //menu click
+            if (Input.GetMouseButtonDown(0))
+            {
+                //raycast
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit, range))
+                {
+                    //highlight object
+
+                    //invoke menu
+
+                    //compare tag/name/value from property scripts
+
+                    //fill menu
+                }
+            }
+        }
+
         if (isPlacementMode == true) { 
         //Make sure the player has enough blocks
         if (blocksLeft > 0 || unlimitedBlocks)
