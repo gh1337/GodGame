@@ -18,6 +18,10 @@ public class BlockPlacer : MonoBehaviour
     //The block prefab to instantiate
     public GameObject blockPrefab;
 
+    public GameObject inspectorMenuPrefab; // inspector menu prefab
+    public bool inspectorMenuIsActive;
+
+
     //Maximum range that the player can place a block from
     public float range = 7f;
 
@@ -53,7 +57,9 @@ public class BlockPlacer : MonoBehaviour
                 {
                     //highlight object
 
-                    //invoke menu
+                    //invoke inspector menu
+                    Instantiate(inspectorMenuPrefab);
+                    inspectorMenuIsActive = true;
 
                     //compare tag/name/value from property scripts
 

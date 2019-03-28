@@ -8,6 +8,7 @@ public class ObjectVariables : MonoBehaviour {
     public bool isSolid;
     public int objType; // 0 = block, 1 = building, 2 = entity
     public int objID; // See OBJ ID list in documentation
+    public bool isDestructable; // can the object be destroyed?
 
     //Object identifier properties
     public string objName; //name of object
@@ -23,6 +24,8 @@ public class ObjectVariables : MonoBehaviour {
     //
     public float objTimeExistance; //Time it has existed
     public float objTimeTillDeath; //Time until it dies
+
+
 
 	// Use this for initialization
 	void Start () {
